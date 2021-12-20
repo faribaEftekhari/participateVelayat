@@ -1,0 +1,34 @@
+{%extends 'index.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
+</head>
+<body>
+    {%block content%}
+    <div class="row" style="margin-top: 10px">
+        <div class="col-sm-12 col-md-12">
+          <div class="caption">
+            <h2>   {{partdetail.title}} </h2>
+            </div>
+          <div class="thumbnail">
+            <img src="{{partdetail.image.url}}" alt="...">
+            <div class="caption">
+              <!-- <h3>   {{newsdetail.title}} </h3> -->
+              <p>{{partdetail.description}}</p>
+              {%if partdetail.day is not None %}
+              <p><a href="#" class="btn btn-primary" role="button">{{partdetail.day}} {{partdetail.month}} {{partdetail.year}}</a>
+                 </p>
+                 {%endif%}
+            </div>
+          </div>
+        </div>
+    </div>
+    {%endblock%}
+</body>
+</html>

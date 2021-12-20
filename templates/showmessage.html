@@ -1,0 +1,32 @@
+{%extends 'index.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
+</head>
+<body>
+    {%block content%}
+    <div class="row" style="margin-top: 10px">
+        <div class="col-sm-12 col-md-12">
+          <div class="caption">
+            <h2>   سخنان و پیام های مدیریت هنرستان ولایت </h2>
+            </div>
+          <div class="thumbnail">
+            
+            <img src="static/Tsocial.jpg" alt="...">
+            <div class="caption">
+              <!-- <h3>   {{newsdetail.title}} </h3> -->
+              <p >{{msgg.0.msg}}</p>
+             
+            </div>
+          </div>
+        </div>
+    </div>
+    {%endblock%}
+</body>
+</html>

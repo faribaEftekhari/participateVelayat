@@ -1,0 +1,96 @@
+{%extends 'index.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}"/>
+    <script src="{% static "Scripts/jquery-1.10.2.min.js" %}"></script>
+    <script src="{% static "Scripts/bootstrap-rtl.js" %}"></script>
+   
+</head>
+<body>
+    {%block content%}
+  
+        
+        <div class="container" > 
+            <header class="heading">
+            <h2  >
+            {%if participate.0.year is not None%}          
+                فعالیت های مشارکتی انجام شده در سال {{participate.0.year}}           
+            {%else%}
+                فعالیتی ثبت نشده است.
+            {%endif%}
+        </h2>
+            </header>
+                                   
+        <div class="inner">
+      
+      
+      <div class="row" style="margin-top: 10px">
+        {%for part in participate%}
+            <div class="col-sm-6 col-md-6" style="margin-top: 10px" >
+              <a  href="{% url 'partnews' pk=part.id %}" > 
+              <div class="thumbnail">                                   
+                <img class="review-image  " src="{{ part.image.url}}" alt="..." style="width: 100% ; height:143px; margin-top:8px;">
+                <div class="caption">
+                  <h3>   {{part.title}} </h3>
+                  <p>{{part.snippet}}</p>
+                  <p><a href="#" class="btn btn-primary" role="button">
+                    {{part.day}} {{part.month}} {{part.year}}
+                  </a> </p>
+                </div>
+                
+              </div>
+            </a>
+            </div>
+        {%endfor%}
+
+            <!-- <div class="col-sm-6 col-md-6">
+                    <div class="thumbnail">
+                      <img src="https://toplearn.com/img/course/img-course-%D8%AF%D9%88-%D8%B4%D9%86%D8%A8%D9%87-%DB%B2%DB%B7-%D8%A2%D8%B0%D8%B1-%DB%B1%DB%B3%DB%B9%DB%B6-57906034-1014.jpg" alt="...">
+                      <div class="caption">
+                        <h3> آموزش حرفه ای کار با Alexa  </h3>
+                        <p> در دنیای پر رقابت امروز تحلیل و برسی رقبا یکی از مهمترین اقدامات محسوب می شود . وب سایت بزرگ الکسا که در  آوریل سال ۱۹۹۶ کار خود را شروع کرده روز به روز محبوبیتش را توسط کاربران خود افزایش داد . اگر شما هم جزو کسانی هستید که کسب و کار خود را در بستر </p>
+                        <p><a href="#" class="btn btn-primary" role="button">جزئیات</a> <a href="#" class="btn btn-default" role="button">باز نشر</a></p>
+                      </div>
+                    </div>
+                  </div> -->
+
+
+          </div>
+        </div>
+        </div>   
+          <!-- <div class="row" style="margin-top: 10px">
+                <div class="col-sm-6 col-md-6">
+                  <div class="thumbnail">
+                    <img src="https://toplearn.com/img/course/img-course-%D8%B3%D9%87-%D8%B4%D9%86%D8%A8%D9%87-%DB%B5-%D8%AF%DB%8C-%DB%B1%DB%B3%DB%B9%DB%B6-54859757-1114.jpg" alt="...">
+                    <div class="caption">
+                      <h3>آموزش بوت استرپ (BootStrap) </h3>
+                      <p>Bootstrap مجموعه ای از ابزارهای رایگان برای ایجاد صفحات وب و نرم افزارهای تحت وب است که شامل دستورات HTML، CSS و توابع جاوا اسکریپت جهت تولید و نمایش فرم ها، دکمه ها، تب ها، ستون ها و سایر المان های مورد نیاز طراحی وب می باشد.</p>
+                      <p><a href="#" class="btn btn-primary" role="button">جزئیات</a> <a href="#" class="btn btn-default" role="button">باز نشر</a></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6">
+                        <div class="thumbnail">
+                          <img src="https://toplearn.com/img/course/img-course-%D8%AF%D9%88-%D8%B4%D9%86%D8%A8%D9%87-%DB%B2%DB%B7-%D8%A2%D8%B0%D8%B1-%DB%B1%DB%B3%DB%B9%DB%B6-57906034-1014.jpg" alt="...">
+                          <div class="caption">
+                            <h3> آموزش حرفه ای کار با Alexa  </h3>
+                            <p> در دنیای پر رقابت امروز تحلیل و برسی رقبا یکی از مهمترین اقدامات محسوب می شود . وب سایت بزرگ الکسا که در  آوریل سال ۱۹۹۶ کار خود را شروع کرده روز به روز محبوبیتش را توسط کاربران خود افزایش داد . اگر شما هم جزو کسانی هستید که کسب و کار خود را در بستر </p>
+                            <p><a href="#" class="btn btn-primary" role="button">جزئیات</a> <a href="#" class="btn btn-default" role="button">باز نشر</a></p>
+                          </div>
+                        </div>
+                      </div>
+
+
+              </div> -->
+    {%endblock%}
+</body>
+</html>

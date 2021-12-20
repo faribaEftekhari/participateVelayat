@@ -1,0 +1,186 @@
+{%load widget_tweaks%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+      {%block title%}
+      {%endblock%}
+
+    </title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}"/>
+    <script src="{% static "Scripts/jquery-1.10.2.min.js" %}"></script>
+    <script src="{% static "Scripts/bootstrap-rtl.js" %}"></script>
+</head>
+<body>  
+  
+    <div class="container">
+      
+        <div id="header" class="row">          
+          
+          <!-- <div class="imagebaner" ></div> -->
+          <div class="geeks">
+            <img class="imgg" >
+
+          </div>
+       
+            <nav class="navbar navbar-inverse  ">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://medu.ir">وزارت آموزش و پرورش</a>
+                  </div>
+              
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li name="{% url 'home' %}"><a href="{% url '' %}">خانه <span class="sr-only">(current)</span></a></li>
+                      <li><a href="{% url 'about' %}">درباره ما</a></li>
+                      <li><a href="{% url 'showmessage' %}">سخنان و پیام های مدیر</a></li>
+                      <li><a href="{% url 'registerVolenteer'%}">ثبت نام داوطلب مشارکت</a></li>
+                      <!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">گروه های خبری <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">ورزشی</a></li>
+                          <li><a href="#">سیاسی</a></li>
+                          <li><a href="#">هنری</a></li>
+                          <li><a href="#">فرهنگی</a></li>
+                  
+                        </ul>
+                      </li> -->
+                    </ul>
+                    <form action="{% url 'search' %}" class="navbar-form navbar-left" method="get">
+                      <div class="form-group">
+                        <input type="text" id="qry" name="qry" class="form-control" placeholder="جستجو">
+                      </div>
+                      <button type="submit" class="btn btn-default">
+                          <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    </form>
+               
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
+        </div>
+        <div class="row" style="margin-top: 40px">
+
+            <div id="content" class="col-lg-8 col-md-9 col-sm-6 col-xs-12 pull-left">
+              {%block content%}
+               {%endblock%}
+           
+
+                   
+            </div>
+            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12 pull-right" id="sidebar" >
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading titr">
+                          پنل مدیریت</div>
+                        <div class="panel-body">                          
+                            <form class="site-form" action="{% url 'afterlogin' %}" method="post">
+                              {%csrf_token%}
+                                <div class="form-group">
+                                  
+                                  <!-- {% render_field form.username name="username" class="form-group" placeholder="نام کاربری" %} -->
+      
+                                  <label for="username"> نام کاربری</label>
+                                  <input type="text" class="form-control" id="username" placeholder="نام کاربری" name="username">
+                                </div>
+                                <div class="form-group">
+                                  <!-- {% render_field form.password name="password" id="password" class="form-group" placeholder="پسورد" %} -->
+                                  <label for="password">کلمه عبور</label>
+                                  <input type="password" class="form-control" id="password" placeholder="کلمه عبور" name="password">
+                                </div>
+                              
+                                <!-- <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox"> مرا به خاطر بسپار
+                                  </label>
+                                </div> -->
+                                <input type="submit" value="ورود به بخش مدیریت" class="btn btn-success btn-block">
+                              </form>
+                        </div>
+                      </div>
+    
+    
+                      <div class="list-group">                        
+                        <a href="#" class="list-group-item active titr">
+                          سمن ها و کانون های محلی
+                        </a>
+                        {%for saman in samans%}
+                          <a href="{{saman.link}}" class="list-group-item">                          
+                          {{saman.title}}</a>                          
+                        {%endfor%}
+                        
+                      </div>
+    
+    
+                      <div class="list-group">
+                        <a href="#" class="list-group-item active titr">
+                          اخبار                        </a>
+                        {%for new in news%}
+                            <a href="{% url 'newsdetail' pk=new.id %}" class="list-group-item" >
+                              <img src="{{new.image.url}}" width="25%" height="10%"  style="mix-blend-mode: multiply;">
+                              <h4 class="list-group-item-heading" style="font-family: IRANSans;font-style: normal;src: url('../fonts/IRANSans/IRANSans.eot');"> {{new.title}}</h4>
+                              <p class="list-group-item-text">{{new.snippet}}</p><br />
+                            </a>
+                        {%endfor%}   
+    
+                          </div>
+                          <div class="list-group" style="font-family: IRANSans;" >
+                            <a href="#" class="list-group-item active titr">
+                               آرشیو فعالیت های مشارکتی                        </a>                           
+                                <a href="{% url 'archive' pk=1400 %}" class="list-group-item">
+                                  <h4 class="list-group-item-heading" style="font-family: IRANSans;font-style: normal;src: url('../fonts/IRANSans/IRANSans.eot');" > سال 1400</h4>                                  
+                                </a>                        
+                                   <a href="{% url 'archive' pk=1401 %}" class="list-group-item">
+                                     <h4 class="list-group-item-heading" style="font-family: IRANSans;font-style: normal;src: url('../fonts/IRANSans/IRANSans.eot');"> سال 1401</h4>                                  
+                                   </a>                           
+                                     <a href="{% url 'archive' pk=1402 %}" class="list-group-item">
+                                       <h4 class="list-group-item-heading" style="font-family: IRANSans;font-style: normal;src: url('../fonts/IRANSans/IRANSans.eot');"> سال 1402</h4>                                  
+                                     </a>     
+                                                            
+                                       <a href="{% url 'archive' pk=1403 %}" class="list-group-item">
+                                         <h4 class="list-group-item-heading" style="font-family: IRANSans;font-style: normal;src: url('../fonts/IRANSans/IRANSans.eot');"> سال 1403</h4>                                  
+                                       </a>                                                                    
+                                         <a href="{% url 'archive' pk=1404 %}" class="list-group-item">
+                                           <h4 class="list-group-item-heading" style="font-family: IRANSans;font-style: normal;src: url('../fonts/IRANSans/IRANSans.eot');"> سال 1404</h4>                                  
+                                         </a>     
+                                        <a href="{% url 'archive' pk=1405 %}" class="list-group-item">
+                                             <h4 class="list-group-item-heading" style="font-family: IRANSans;font-style: normal;src: url('../fonts/IRANSans/IRANSans.eot');"> سال 1405</h4>                                  
+                                           </a>     
+        
+                          </div>
+    
+                </div>
+            
+        </div>
+        <div id="footer" class="container ">
+          <div class="row footer ">
+            <div class=" footer-module col-lg-8 col-md-9 col-sm-6 col-xs-12 ">
+            				                           
+                <ul class="col-md-3" style="list-style: none;cursor: pointer;">
+                <li><a style="color:rgb(21, 110, 182);" target="_blank" href="https://eorg.medu.ir/eorg/Login.aspx?ReturnUrl=%2feorg">اتوماسیون اداری</a></li>
+                <li><a style="color:rgb(21, 110, 182);" target="_blank" href="https://portal.sigma.ir/customers/karaj-municipality">پورتال شهرداری کرج</a></li>                
+                <li><a style="color:rgb(21, 110, 182);" href="http://fish.medu.ir/">فیش حقوقی</a></li>
+                <li><a style="color:rgb(21, 110, 182);" target="_blank" href="https://shad.ir/">نسخه وب شبکه شاد</a></li>
+                
+            </ul>
+             
+
+            </div>
+          </div>
+          
+       
+        </div>
+    </div>
+</body>
+</html>

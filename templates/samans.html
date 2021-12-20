@@ -1,0 +1,74 @@
+{%extends 'adminbaner.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
+</head>
+<body>
+    {%block content%}
+    
+      <div class="panel panel-primary">
+        <div class="panel-heading"> ثبت سمن و کانون محلی</div>
+        <div class="panel-body">    
+        <form class="site-form" action="{% url 'registerSaman' %}" method="get">
+            {%csrf_token%}
+              <div class="form-group">                
+                <label for="title1"> عنوان </label>
+                <input type="text" class="form-control" id="title1" placeholder="عنوان سازمان سمن " name="title1">
+              </div>
+              <div class="form-group">               
+                <label for="link">پیوند </label>
+                <input type="text" class="form-control" id="link" placeholder="پیوند به سایت سمن" name="link">
+              </div>            
+              <input type="submit" value="افزودن به لیست سمن ها" class="btn btn-success btn-block">
+            </form>  
+            </div>
+            </div>
+                
+      <div class="row">
+              <table>
+                  <tr>
+                      <div class=" panel panel-primary">
+                          <div class=" panel-heading"> مشخصات سمن ها</div>
+                          
+                              </div>
+      
+                  </tr>
+              </table>
+      
+          </div>  
+    <div class="container">
+    <div class="table">
+        <table >
+            <tr>
+        <th scope="col"><strong>عنوان  </strong></th>
+        <!-- <th scope="col"><strong>پیوند  </strong></th>    -->
+        
+        </tr>
+        
+                            {%for saman in samans%}
+                          <tr class="table-active">    <td class="table-primary">
+                                {{saman.title}} <br>
+                                <!-- <td class="table-primary">
+                                     {{saman.link}}</td> -->
+                                     <td class="table-primary">
+                                      <a class="highlight" href="{% url 'delsaman' saman.id%}">
+                                          <strong>حذف</strong>
+                                      </a></td>
+                                      </tr>
+                                      
+                        {%endfor%}
+        
+          </table>
+    </div>
+  </div>
+    
+    {%endblock%}
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{%extends 'adminbaner.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
+</head>
+<body>
+    {%block content%}
+   
+    <div class="row">
+        <table>
+            <tr>
+                <div class=" panel panel-primary">
+                    <div class=" panel-heading">  مشخصات داوطبین مشارکت</div>
+                    
+                        </div>
+
+            </tr>
+        </table>
+
+    </div>    
+   
+    <div class="container">
+                
+           
+        <div class="table">
+            <table >
+                <tr>
+
+            <th scope="col" ><strong>نام و نام خانوادگی  </strong></th>
+            <th scope="col"><strong>شغل  </strong></th>   
+            <th scope="col"><strong>شماره تماس  </strong></th>
+            <th scope="col"><strong>آدرس  </strong></th>
+            
+            </tr>
+            
+                                {%for vol in volenteers%}
+                              <tr class="table-active">    <td class="table-primary">
+                                    {{vol.fullname}} <br></td>
+                                    <td class="table-primary" >
+                                         {{vol.career}}</td>                                         
+                                         <td class="table-primary">
+                                            {{vol.tel}}</td>
+                                            <td class="table-primary">
+                                                {{vol.address}}</td>                                                
+                                                    <td class="table-primary">
+                                                        <a class="highlight" href="{% url 'delvolenteer' vol.id%}">
+                                                            <strong>حذف</strong>
+                                                        </a></td>
+                                          </tr>
+                            {%endfor%}
+            
+              </table>
+        </div>
+        </div>    
+      
+    {%endblock%}   
+</body>
+</html>

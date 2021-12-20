@@ -1,0 +1,92 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {%block title%}
+            {%endblock%}
+        </title>
+        {%load static%}
+        <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}"/>
+        <script src="{% static "Scripts/jquery-1.10.2.min.js" %}"></script>
+        <script src="{% static "Scripts/bootstrap-rtl.js" %}"></script>
+    </head>
+    <body>
+      <div class="container">
+          <div id="header" class="row">          
+          
+          <!-- <div class="imagebaner" ></div> -->
+          <div class="geeks">
+            <img class="imgg" >
+
+          </div>
+            <nav class="navbar navbar-inverse ">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://medu.ir">وزارت آموزش و پرورش</a>
+                  </div>
+              
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li name="{% url 'home'%}"><a href="{% url '' %}">خانه <span class="sr-only">(current)</span></a></li>
+                      <li><a href="{% url 'about'%}">درباره ما</a></li>
+                      <li><a href="{% url 'showmessage' %}">سخنان و پیام های مدیر</a></li>
+                      <li><a href="{% url 'registerVolenteer'%}">ثبت نام داوطلب مشارکت</a></li>
+                      <!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">گروه های خبری <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">ورزشی</a></li>
+                          <li><a href="#">سیاسی</a></li>
+                          <li><a href="#">هنری</a></li>
+                          <li><a href="#">فرهنگی</a></li>
+                  
+                        </ul>
+                      </li> -->
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="جستجو">
+                      </div>
+                      <button type="submit" class="btn btn-default">
+                          <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    </form>
+               
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
+        </div>
+        <div class="row " style="margin-top: 40px">
+    
+        <div id="content" class="col-lg-8 col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-lg-offset-2 col-sm-offset-2" >
+        {%block content%}
+        {%endblock%}
+          </div>
+          </div>
+          <div id="footer" class="container ">
+            <div class="row footer ">
+              <div class=" footer-module col-lg-8 col-md-9 col-sm-6 col-xs-12 ">
+                                                 
+                  <ul class="col-md-3" style="list-style: none;cursor: pointer;">
+                  <li><a style="color:rgb(21, 110, 182);" target="_blank" href="https://eorg.medu.ir/eorg/Login.aspx?ReturnUrl=%2feorg">اتوماسیون اداری</a></li>
+                  <li><a style="color:rgb(21, 110, 182);" target="_blank" href="https://portal.sigma.ir/customers/karaj-municipality">پورتال شهرداری کرج</a></li>                
+                  <li><a style="color:rgb(21, 110, 182);" href="http://fish.medu.ir/">فیش حقوقی</a></li>
+                  <li><a style="color:rgb(21, 110, 182);" target="_blank" href="https://shad.ir/">نسخه وب شبکه شاد</a></li>
+                  
+              </ul>
+               
+  
+              </div>
+    </div>
+    </body>
+    </html>

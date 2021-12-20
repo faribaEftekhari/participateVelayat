@@ -1,0 +1,44 @@
+{%extends 'adminbaner.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}"/>
+    <script src="{% static "Scripts/jquery-1.10.2.min.js" %}"></script>
+    <script src="{% static "Scripts/bootstrap-rtl.js" %}"></script>
+</head>
+<body>
+   {%block content%} 
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading titr"> ثبت پیام  </div>
+        <div class="panel-body">                          
+            <form class="site-form" action="{% url 'messageadmin' %}" method="post" >
+                  
+              {%csrf_token%}
+              <div  class="container">
+                {%for field in form%}
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 ">
+                    <b>{{field.label_tag}}</b>     
+                  </div>
+                    <div class="col-lg-9 col-md-9">  <b> {{field}}</b>
+                    </div>
+                  </div>
+                  {%endfor%}
+              </div>
+                <input type="submit" value="ثبت پیام مدیرت " class="btn btn-success btn-block">
+
+              </form>
+        </div>
+      </div>  
+     {%endblock%} 
+
+</body>
+</html>

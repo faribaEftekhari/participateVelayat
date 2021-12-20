@@ -1,0 +1,24 @@
+
+{% extends request.user.is_authenticated|yesno:'adminbaner.html,usualbaner.html'%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+    </title>
+</head>
+<body>
+    {%block content%}
+    <div class="container" > 
+        <header class="heading">
+        <h2  >
+    "لطفا اطلاعات را به درستی وارد کنید"
+    </h2>
+    </header>
+    </div>
+    {%endblock%}
+</body>
+</html>
