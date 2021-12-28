@@ -6144,20 +6144,21 @@ p{
   object-fit: contain;
 }
 .geeks {
-  width:100%;
-  height:150px;    
+  width:100%;  
+  text-align:center;
+  vertical-align: middle;
 }
-.imgg {  
+.imgg {    
    object-fit:contain;
    max-height: 100%;
    max-width: 100%;    
-   display: block;
-   margin: auto auto; 
-   
-   content: url('/static/banervelayat.jpg') ;
-   
+   display:inline;
+   vertical-align: middle;
+   margin: auto auto;    
+   content: url('/static/banervelayat.jpg') ;   
    background-position: 50% 50%;
-  background-size: cover;
+   background-size: cover;
+   
   
 }
 .desc{
@@ -6169,4 +6170,5 @@ p{
   width: 85px;
   height: 65px;
   border-radius: 0px;
+  
 }
